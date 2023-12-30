@@ -26,6 +26,7 @@
                                 alt=" image">
                         </div>
                         <div class="col-md-10">
+                            <small>~ {{post.author}}</small>
                             <small>{{post.date_created}}</small>
                             <hr>
                             <a href="{% url 'post-detail' post.id %}" class="h3 text-decoration-none">{{post.title}}</a>
