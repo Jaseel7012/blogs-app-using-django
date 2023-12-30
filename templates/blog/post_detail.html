@@ -1,0 +1,66 @@
+{% extends 'partials/base.html' %}
+{% block title %}home{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5 pt-5">
+        <div class="col-md-5 offset-md-4">
+            <div class="card my-4 shadow">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mt-4">
+                            <img class="img-thumbnail" src="{{ post.author.profilemodel.image.url }}"
+                                alt="profile-image">
+                        </div>
+                        <div class="col-md-8 mt-4">
+                            <small>{{post.date_created}}</small>
+                            {% if post.author == request.user %}
+                            <span><a href="{% url 'post-delete' post.id %}"
+                                    class="btn btn-danger btn-sm mx-3 float-end">Delete</a></span>
+                            <span><a href="{% url 'post-edit' post.id %}"
+                                    class="btn btn-secondary mx-1 btn-sm float-end">Edit</a></span>
+                            {% endif %}
+                            <hr>
+                            <h4>{{post.title}}</h4>
+                            <p>{{post.content}}</p>
+                        </div>
+                    </div>
+                    
+                    
+                    <a class="text-dark mx-3" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-commenting-o fa-lg"
+                            aria-hidden="true"></i></a><small class="p-1">{{post.comment_count}}</small>
+                    <div class="collapse p-2" id="collapseExample">
+                        <div style="height: 280px; overflow-y: scroll; " class="card card-body">
+                            {% for comment in post.comments %} 
+                            <p >
+                                
+                                <b>~{{ comment.user }}.</b>
+                                <p class="text-justify mx-3">{{ comment.content }}</p>
+                                 
+                                
+                            </p>
+                            {% endfor %}
+
+
+
+
+                        </div>
+                    </div>
+                    
+
+                </div>
+                <form method="POST" class="p-4">
+                    {% csrf_token %}
+                    {{ c_form | crispy}}
+                    <input type="submit" value="Comment" class="btn btn-secondary btn-sm">
+                </form>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+.cover{
+    background: url('https://img.freepik.com/free-photo/office-table-with-cup-coffee-keyboard-notepad_1220-4617.jpg?size=626&ext=jpg&ga=GA1.1.44546679.1703116800&semt=ais') ;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+.coverlogin{
+    background: url('https://thumbs.dreamstime.com/b/elegant-black-office-desktop-laptop-accessories-copy-space-elegant-black-office-desktop-laptop-accessories-115862322.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+.image{
+   
+    height: 90px;
+    overflow: hidden;
+
+}
